@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order
+spec:
+  selector:
+    matchLabels:
+      app: order
+  template:
+    metadata:
+      labels:
+        app: order
+    spec:
+      containers:
+        - name: order
+          image: sidartasilva/codelivery-order:v2
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: order-conf
+          volumeMounts:
+            - mountPath: /home/node/app/.env
+              name: order-conf
+              subPath: .env
+
+      volumes:
+        - name: order-conf
+          configMap:
+            name: order-conf
+            items:
+              - key: env
+                path: .env

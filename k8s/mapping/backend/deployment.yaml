@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: map
+spec:
+  selector:
+    matchLabels:
+      app: map
+  template:
+    metadata:
+      labels:
+        app: map
+    spec:
+      containers:
+        - name: map
+          image: sidartasilva/codelivery-micro-mapping-backend
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: map-conf
+          volumeMounts:
+            - mountPath: /home/node/app/.env
+              name: map-conf
+              subPath: .env
+      volumes:
+        - name: map-conf
+          configMap:
+            name: map-conf
+            items:
+              - key: env
+                path: .env

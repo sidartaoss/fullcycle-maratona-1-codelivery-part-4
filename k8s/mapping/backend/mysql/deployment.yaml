@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: map-mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: map-mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: map-mysql
+    spec:
+      containers:
+        - image: mysql:5.7
+          args:
+            - "--ignore-db-dir=lost+found"
+          name: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: mysql-pass
+          ports:
+            - containerPort: 3306
+              name: mysql
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-persistent-storage
+      volumes:
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: map-mysql-pv-claim

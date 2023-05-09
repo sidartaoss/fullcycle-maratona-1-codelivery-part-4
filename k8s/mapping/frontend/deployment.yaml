@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: map-spa
+spec:
+  selector:
+    matchLabels:
+      app: map-spa
+  template:
+    metadata:
+      labels:
+        app: map-spa
+    spec:
+      containers:
+        - name: map-spa
+          image: sidartasilva/codelivery-mapping-frontend:v2
+          ports:
+            - containerPort: 3000

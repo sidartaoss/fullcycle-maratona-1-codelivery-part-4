@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: order-conf
+data:
+  env: |
+    APP_PORT=3000
+    MICRO_DRIVERS_URL=http://codelivery-driver.sidartaoss.com
+    MICRO_MAPPING_URL=http://codelivery-mapping-frontend.sidartaoss.com
+    RABBITMQ_HOST=rabbitmq-service
+    RABBITMQ_USER=admin
+    RABBITMQ_PASSWORD=admin
+    MYSQL_HOST=order-mysql-service
+    MYSQL_USER=root
+    MYSQL_PASSWORD=root
