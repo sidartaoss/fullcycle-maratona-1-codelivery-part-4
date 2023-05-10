@@ -51,41 +51,39 @@ Dinâmica do sistema:
 - Sistema de mensageria (_RabbitMQ_)
 - _WebSockets_
 
-### Conceitos de Docker / Kubernetes
+### Docker / Kubernetes
 
 - Primeiramente, é válido relembrar alguns conceitos de _Docker_ e _Kubernetes_.
 
-  - Docker
+#### Docker
 
-    - O _Docker_ contém containers.
-    - _Containers_ são leves, diferentes de máquinas virtuais e equivalem a processos, ou seja, no momento que determinado processo morre, o _container_ também cai.
-    - Um _container_ é baseado em:
+- O _Docker_ trabalha com _containers_.
+- _Containers_ são leves e diferentes de máquinas virtuais. Eles equivalem a processos, ou seja, no momento que determinado processo morre, o _container_ também morre.
+- Um _container_ é baseado em:
 
-      - _Namespaces_ (Isola os processos);
-      - _Cgroups_ (Controla os recursos computacionais (memória, _CPU_, etc.));
-      - _Overlay File System_ (_OFS_).
-        - Ao baixar a imagem, são baixados pedaços (_chunks_) de imagens. O _OFS_ controla para que pedaços em comum com outras imagens não sejam baixados novamente.
+  - _Namespaces_ (Isola os processos);
+  - _Cgroups_ (Controla os recursos computacionais (memória, _CPU_, etc.));
+  - _Overlay File System_ (_OFS_).
+    - Ao baixar a imagem, são baixados pedaços (_chunks_) de imagens. O _OFS_ controla para que pedaços em comum com outras imagens não sejam baixados novamente.
 
-    - O que é a imagem?
+- O que é a imagem?
 
-      - Imagem é uma espécie de _template_ e o seu estado é imutável, ou seja, ela nunca muda.
-      - A imagem é gerada a partir do _Dockerfile_ e é guardada (ou hospedada) no _Image Registry_ (como o _DockerHub_, por exemplo);
+  - Imagem é uma espécie de _template_ e o seu estado é imutável, ou seja, ela nunca muda.
+  - A imagem é gerada a partir do _Dockerfile_ e é guardada (ou hospedada) no _Image Registry_ (como o _DockerHub_, por exemplo);
 
-    - Como que é criado o _container_?
-      - A partir da imagem. O _container_ utiliza a imagem para executar um processo.
+- Como que é criado o _container_?
+  - A partir da imagem. O _container_ utiliza a imagem para executar um processo.
 
-  - Kubernetes
+#### Kubernetes
 
-    - Como publicar a imagem de uma aplicação no _cluster_?
+- Como publicar a imagem de uma aplicação no _cluster_?
 
-      - Para isso, é necessário criar um _Deployment_, aonde é definido a imagem que deve ser baixada do _Image Registry_;
-      - A partir do _Deployment_, são definidas quantas réplicas do _Pod_ serão geradas automaticamente pelo _Kubernetes_.
+  - Para isso, é necessário criar um _Deployment_, aonde é definido a imagem que deve ser baixada do _Image Registry_;
+  - A partir do _Deployment_, são definidas quantas réplicas do _Pod_ serão geradas automaticamente pelo _Kubernetes_.
 
-    - Como obter acesso aos containers dentro do _cluster_?
+- Como obter acesso aos _containers_ dentro do _cluster_?
 
-      - A partir da criação de _Services_.
-        - Dependendo do tipo de _Service_, ele vai poder se comunicar com outros _containers_ e _Services_ dentro do _Kubernetes_ a partir da definição da porta (_NodePort_) ou do _IP_ (_ClusterIP_).
-        - Já o _LoadBalancer_ disponibiliza um acesso externo ao _container_.
+  - A partir da criação de _Services_. Dependendo do tipo de _Service_, ele vai poder se comunicar com outros _containers_ e _Services_ dentro do _Kubernetes_ a partir da definição da porta (_NodePort_) ou do _IP_ (_ClusterIP_). Já o _LoadBalancer_ disponibiliza um acesso externo ao _container_.
 
 #### Criação do Cluster Kubernetes
 
