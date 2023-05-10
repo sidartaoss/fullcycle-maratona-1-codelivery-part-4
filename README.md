@@ -95,7 +95,7 @@ Será criado um _cluster_ seguindo a configuração padrão do _GKE_ (_Standard 
 
 ![Cluster Kubernetes](./images/cluster-kubernetes.png)
 
-Mantendo o númer de máquinas recomendado (_Number of nodes_: 3).
+Mantendo o número de máquinas recomendado (_Number of nodes_: 3).
 
 ![Número padrão de nodes](./images/numero-padrao-nodes.png)
 
