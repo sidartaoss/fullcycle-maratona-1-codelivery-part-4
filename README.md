@@ -89,7 +89,7 @@ Dinâmica do sistema:
 
 #### Criação do Cluster Kubernetes
 
-Para o deploy das aplicações, primeiramente, é necessário criar um _cluster_ no _Kubernetes_.
+Para o _deploy_ das aplicações, primeiramente, é necessário criar um _cluster_ no _Kubernetes_.
 
 Será criado um _cluster_ seguindo a configuração padrão do _GKE_ (_Standard Cluster_).
 
