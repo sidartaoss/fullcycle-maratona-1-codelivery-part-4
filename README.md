@@ -30,7 +30,7 @@ Dinâmica do sistema:
 
 #### Operate What You Build
 
-- Nesta terceira versão, é feito o _deploy_ das aplicações no _Google Kubernetes Engine_ (_GKE_). Posteriormente, serão adicionadas as tecnologias de integração contínua e observabilidade.
+- Nesta quarta versão, é feito o _deploy_ das aplicações no _Google Kubernetes Engine_ (_GKE_). Posteriormente, serão adicionadas as tecnologias de integração contínua e observabilidade.
 
   - Backend
     - Golang
